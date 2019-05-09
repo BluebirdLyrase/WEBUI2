@@ -1,5 +1,14 @@
 
-///////////////////////////Product////////////////////////////////////
+  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  });
+
+
+///////////////////////////Data Dashboard///////////////////////////////////
 
     $.get("data/products.json", function(data,status){
 
@@ -10,8 +19,6 @@
             console.log("BAD");}
     });
 
-///////////////////////////Product////////////////////////////////////
-
     $.get("data/customers.json", function(data,status){
 
         if(status == 'success'){
@@ -21,8 +28,6 @@
             console.log("BAD");}
     });
 
-///////////////////////////Product////////////////////////////////////
-
 $.get("data/suppliers.json", function(data,status){
 
     if(status == 'success'){
@@ -31,7 +36,7 @@ $.get("data/suppliers.json", function(data,status){
     }else{
         console.log("BAD");}
 });
-///////////////////////////Product////////////////////////////////////
+
 
 $.get("data/orders.json", function(data,status){
 
@@ -41,6 +46,7 @@ $.get("data/orders.json", function(data,status){
     }else{
         console.log("BAD");}
 });
+
 //////////////////////////LOGIN//////////////////////////////////////////
 $(function () {
     $('#mainform').submit(function (event) {
