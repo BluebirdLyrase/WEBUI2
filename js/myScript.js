@@ -82,10 +82,9 @@ $.get("data/customers.json", function(data, status){
 
         var tableHead = '<tr class="bg-gradient-info"><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr>'
         $('#table').append(tableHead);
-
         for(var index in data){
             var customer = data[index];
-            var tableRow = '<tr><td><a href="custdetail.html" class="nav-link" onclick="goDetail(`'+index+'`,)" >'+customer.customerID+'</a></td><td>'+customer.companyName+'</td><td>'+customer.contactName+'</td><td>'+customer.contactTitle+'</td></tr>'
+            var tableRow = '<tr><td><a href="custdetail.html" class="nav-link" onclick="setID(`'+index+'`)" >'+customer.customerID+'</a></td><td>'+customer.companyName+'</td><td>'+customer.contactName+'</td><td>'+customer.contactTitle+'</td></tr>'
          $('#table').append(tableRow);
          
     }
@@ -94,10 +93,22 @@ $.get("data/customers.json", function(data, status){
     }else{console.log("BAD");}
 
     $(function () {
-        customer = localStorage.getItem("selected");
-        console.log(customer);
-        $('#ID').empty().append("ID:" +customer.customerID);
-        $('#detail').empty().append(localStorage.getItem("selected"));
+        ID = localStorage.getItem("selected");
+        
+        id = "<b>CustomerID : </b>"+data[ID].customerID;
+        name = "<b>Name: </b>"+data[ID].companyName;
+        Cname= "<b>Contact Name: </b>"+data[ID].contactName;
+        Ctitle= "<b>Contact Title: </b>"+data[ID].contactTitle;
+        street= "<b>Street: </b>"+data[ID].address.street;
+        city="<b>City: </b>"+ data[ID].address.city;
+        region="<b>Region: </b>"+ data[ID].address.region;
+        postalCode="<b>Postal Code: </b>"+ data[ID].address.postalCode;
+        country="<b>Country: </b>"+ data[ID].address.country;
+        phone="<b>Phone: </b>"+ data[ID].address.phone;
+
+        $('#detail').append(id+"<br>"+name+"<br>"+Cname+"<br>"+Ctitle);
+        $('#detail').append("<br><b>ADDRESS </b>"+street+"<br>"+city+"<br>"+region+"<br>"+postalCode+"<br>"+country+"<br>"+phone);
+        
         
         
         });
@@ -106,7 +117,7 @@ $.get("data/customers.json", function(data, status){
 
 
 
-function goDetail(ID){
+function setID(ID){
     localStorage.setItem("selected",ID);
 }
 
