@@ -92,9 +92,9 @@ $.get("data/customers.json", function(data, status){
 
     }else{console.log("BAD");}
 
+////////////////////Placeholder and CustomerEdit///////////////////////////////////////////
     $(function () {
         ID = localStorage.getItem("selected");
-        
         id = "<b>CustomerID : </b>"+data[ID].customerID;
         name = "<b>Name: </b>"+data[ID].companyName;
         Cname= "<b>Contact Name: </b>"+data[ID].contactName;
@@ -109,11 +109,29 @@ $.get("data/customers.json", function(data, status){
         $('#detail').append(id+"<br>"+name+"<br>"+Cname+"<br>"+Ctitle);
         $('#detail').append("<br><b>ADDRESS </b>"+street+"<br>"+city+"<br>"+region+"<br>"+postalCode+"<br>"+country+"<br>"+phone);
         
-        
+        $('#CID').attr("placeholder", data[ID].customerID);
+        $('#Company').attr("placeholder", data[ID].companyName);
+        $('#CName').attr("placeholder", data[ID].contactName);
+        $('#Ctitle').attr("placeholder", data[ID].contactTitle);
+        $('#street').attr("placeholder", data[ID].address.street);
+        $('#city').attr("placeholder", data[ID].address.city);
+        $('#region').attr("placeholder", data[ID].address.region);
+        $('#postalCode').attr("placeholder", data[ID].address.postalCode);
+        $('#country').attr("placeholder", data[ID].address.country);
+        $('#phone').attr("placeholder", data[ID].address.phone);
+
+
+        $('#editform').submit(function (event) {
+            var form = $('#editform')[0];
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            }
+            $(this).addClass('was-validated');
+        });
         
         });
-
 });
+
 
 
 
