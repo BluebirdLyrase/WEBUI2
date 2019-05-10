@@ -20,7 +20,6 @@
     });
 
     $.get("data/customers.json", function(data,status){
-
         if(status == 'success'){
             var total = data.length;
              $('#customer').empty().append(total);
@@ -73,3 +72,42 @@ $(function () {
     });
 
 });
+
+///////////////////////TABLE/////////////////////////
+console.log('Get data ...');
+$.get("data/customers.json", function(data, status){
+     console.log(data);
+     console.log(status);
+    if(status == 'success'){
+
+        var tableHead = '<tr class="bg-gradient-info"><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr>'
+        $('#table').append(tableHead);
+
+        for(var index in data){
+            var customer = data[index];
+            var tableRow = '<tr><td><a href="custdetail.html" class="nav-link" onclick="goDetail(`'+index+'`,)" >'+customer.customerID+'</a></td><td>'+customer.companyName+'</td><td>'+customer.contactName+'</td><td>'+customer.contactTitle+'</td></tr>'
+         $('#table').append(tableRow);
+         
+    }
+
+
+    }else{console.log("BAD");}
+
+    $(function () {
+        customer = localStorage.getItem("selected");
+        console.log(customer);
+        $('#ID').empty().append("ID:" +customer.customerID);
+        $('#detail').empty().append(localStorage.getItem("selected"));
+        
+        
+        });
+
+});
+
+
+
+function goDetail(ID){
+    localStorage.setItem("selected",ID);
+}
+
+
