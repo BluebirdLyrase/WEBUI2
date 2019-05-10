@@ -128,7 +128,6 @@ $.get("data/customers.json", function(data, status){
             }
             $(this).addClass('was-validated');
         });
-        
         });
 });
 
