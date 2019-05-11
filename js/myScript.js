@@ -95,8 +95,8 @@ $.get("data/customers.json", function(data, status){
 ////////////////////Placeholder and CustomerEdit///////////////////////////////////////////
     $(function () {
         ID = localStorage.getItem("selected");
-        id = "<b>CustomerID : </b>"+data[ID].customerID;
-        name = "<b>Name: </b>"+data[ID].companyName;
+        id = "<b>ID:  </b>"+data[ID].customerID;
+        name = "<b>Company: </b>"+data[ID].companyName;
         Cname= "<b>Contact Name: </b>"+data[ID].contactName;
         Ctitle= "<b>Contact Title: </b>"+data[ID].contactTitle;
         street= "<b>Street: </b>"+data[ID].address.street;
@@ -105,6 +105,17 @@ $.get("data/customers.json", function(data, status){
         postalCode="<b>Postal Code: </b>"+ data[ID].address.postalCode;
         country="<b>Country: </b>"+ data[ID].address.country;
         phone="<b>Phone: </b>"+ data[ID].address.phone;
+        $('#CIDd').append(id);
+        $('#Companyd').append(name);
+        $('#CNamed').append(Cname);
+        $('#Ctitled').append(Ctitle);
+        $('#streetd').append(street);
+        $('#cityd').append(city);
+        $('#regiond').append(region);
+        $('#postalCoded').append(postalCode);
+        $('#countryd').append(country);
+        $('#phoned').append(phone);
+
 
         $('#detail').append(id+"<br>"+name+"<br>"+Cname+"<br>"+Ctitle);
         $('#detail').append("<br><b>ADDRESS </b>"+street+"<br>"+city+"<br>"+region+"<br>"+postalCode+"<br>"+country+"<br>"+phone);
