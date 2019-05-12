@@ -82,7 +82,7 @@ $.get("data/customers.json", function(data, status){
      console.log(status);
     if(status == 'success'){
 
-        var tableHead = '<tr class="bg-gradient-info"><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr>'
+        var tableHead = '<tr class="bg-gradient-info"><th>ID</th><th>Company Name</th><th>Contact Name</th><th>Contact Title</th></tr>'
         $('#table').append(tableHead);
         for(var index in data){
             var customer = data[index];
