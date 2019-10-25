@@ -89,6 +89,7 @@ $.get("data/customers.json", function(data, status){
             var tableRow = '<tr><td><a href="custdetail.html" class="nav-link" onclick="setID(`'+index+'`)" >'+customer.customerID+'</a></td><td>'+customer.companyName+'</td><td>'+customer.contactName+'</td><td>'+customer.contactTitle+'</td></tr>'
          $('#table').append(tableRow);
          
+         
     }
 
 
